@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kunden</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="layout">
+  <aside id="site_sidebar" class="sidebar"></aside>
+  <main class="content container">
+    <h1>Kunden</h1>
+    <section class="card">
+      <h2>Kunde erfassen / bearbeiten</h2>
+      <label class="inline"><input type="checkbox" id="cust_is_company"> Firmenkunde</label>
+      <div id="cust_private_fields">
+        <div class="grid2">
+          <label>Vorname<input id="cust_fname"></label>
+          <label>Nachname<input id="cust_lname"></label>
+        </div>
+      </div>
+      <div id="cust_company_fields" class="hidden">
+        <div class="grid2">
+          <label>Firma<input id="cust_company_name"></label>
+          <label>Kontaktperson<input id="cust_contact_person"></label>
+        </div>
+      </div>
+      <div class="grid3">
+        <label>Straße<input id="cust_street"></label>
+        <label>Nr.<input id="cust_no"></label>
+        <label>PLZ<input id="cust_zip"></label>
+        <label>Ort<input id="cust_city"></label>
+        <label>Land<select id="cust_country"><option value="CH">CH</option><option value="LI">LI</option></select></label>
+      </div>
+      <div class="inline">
+        <button id="add_customer" class="btn">Speichern</button>
+        <button id="update_customer" class="btn hidden">Änderungen speichern</button>
+        <button id="cancel_update_customer" class="btn hidden">Abbrechen</button>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Kundenliste</h2>
+      <table class="table" id="cust_table"><thead><tr><th>Name</th><th>Adresse</th><th>Ort</th><th>Land</th><th></th></tr></thead><tbody id="cust_list"></tbody></table>
+    </section>
+  </main>
+</div>
+<script src="js/common.js"></script>
+<script src="js/app.js"></script>
+<script>App.injectSidebar('kunden');</script>
+</body>
+</html>
