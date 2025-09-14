@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firmen</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="layout">
+  <aside id="site_sidebar" class="sidebar"></aside>
+  <main class="content container">
+    <h1>Firmen</h1>
+    <div class="row">
+      <section class="card" style="flex:1">
+        <h2>Firma erfassen / bearbeiten</h2>
+        <div class="grid2">
+          <label>Name<input id="cred_name"></label>
+          <label>IBAN<input id="cred_iban"><span id="iban_feedback" class="danger"></span></label>
+          <label>Straße<input id="cred_street"></label>
+          <label>Nr.<input id="cred_no"></label>
+          <label>PLZ<input id="cred_zip"></label>
+          <label for="cred_logo">Logo
+            <input type="file" id="cred_logo" accept="image/png,image/jpeg,image/webp">
+            <img id="cred_logo_preview" style="display:none;max-height:64px;margin-top:6px" alt="Logo">
+          </label>
+          <label>Ort<input id="cred_city"></label>
+          <label for="cred_country">Land<select id="cred_country"><option value="CH">CH</option><option value="LI">LI</option></select></label>
+        </div>
+        <div class="inline">
+          <button id="add_firm" class="btn">Speichern</button>
+          <button id="update_firm" class="btn hidden">Änderungen speichern</button>
+          <button id="cancel_update_firm" class="btn hidden">Abbrechen</button>
+          <span id="firm_form_status" class="status"></span>
+        </div>
+        <div id="cred_logo_feedback" class="muted"></div>
+      </section>
+      <section class="card" style="flex:1">
+        <h2>Standard-Firma</h2>
+        <div id="firm_summary" class="small"></div>
+      </section>
+    </div>
+    <section class="card">
+      <h2>Firmenliste</h2>
+      <table class="table" id="firm_table"><thead><tr><th>Name</th><th>IBAN</th><th>Adresse</th><th>Ort</th><th>Land</th><th>Std</th><th></th></tr></thead><tbody id="firm_list"><tr><td colspan="7" class="muted">Lade…</td></tr></tbody></table>
+    </section>
+  </main>
+</div>
+<script src="js/common.js"></script>
+<script src="js/app.js"></script>
+<script>App.injectSidebar('firmen');</script>
+</body>
+</html>

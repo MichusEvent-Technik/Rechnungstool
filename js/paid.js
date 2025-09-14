@@ -1,0 +1,13 @@
+(function(){
+  const {$,esc,state,saveInvoices}=App;
+
+  function renderPaid(){ const tb=$('#paid_invoices_list'); if(!tb) return; const list=state.invoices.filter(i=>!!i.paid); if(!list.length){ tb.innerHTML='<tr><td colspan="7" class="muted">Keine bezahlten Rechnungen.</td></tr>'; return; } tb.innerHTML=''; list.slice().sort((a,b)=>b.id-a.id).forEach(inv=>{ const firm=state.firms.find(f=>String(f.id)===String(inv.firmId)); const cust=state.customers[inv.customerIndex]; const custName=cust? (cust.isCompany?cust.companyName:`${cust.fname} ${cust.lname}`):'—'; const firmName=firm?firm.name:'—'; const tr=document.createElement('tr'); tr.innerHTML=`<td>${esc(inv.no||'')}</td><td>${esc(inv.title||'')}</td><td>${new Date(inv.created).toLocaleDateString()}</td><td>${esc(custName)}</td><td>${esc(firmName)}</td><td class='right'>${esc(inv.total||'')}</td><td class='right'><button class='btn sm' data-act='view' data-id='${inv.id}'>Anzeigen</button> <button class='btn warn sm' data-act='del' data-id='${inv.id}'>✕</button></td>`; tb.append(tr); }); }
+
+  function handle(btn){ const id=Number(btn.dataset.id); const idx=state.invoices.findIndex(i=>i.id===id); if(idx<0) return; const act=btn.dataset.act; if(act==='del'){ if(confirm('Rechnung löschen?')){ state.invoices.splice(idx,1); saveInvoices(); renderPaid(); } return; } if(act==='view'){ openPreview(state.invoices[idx]); return; } }
+
+  function openPreview(inv){ const w=window.open('', '_blank'); if(!w) return; const firm=state.firms.find(f=>String(f.id)===String(inv.firmId))||{}; const cust=state.customers[inv.customerIndex]||{}; const rows=(inv.items||[]).map(it=>`<tr><td>${it.pos}</td><td>${esc(it.name)}</td><td class='r'>${it.qty}</td><td class='r'>${Number(it.price).toFixed(2)}</td><td class='r'>${Number(it.total).toFixed(2)}</td></tr>`).join(''); const subtotal=(inv.items||[]).reduce((s,it)=>s+Number(it.total||0),0); const vat=Number(inv.vat||0); const vatAmt=subtotal*(vat/100); const grand=subtotal+vatAmt; const html=`<!doctype html><meta charset='utf-8'><style>body{font:12px Arial;margin:0;} table{border-collapse:collapse;width:100%} th,td{border:1px solid #ccc;padding:4px 6px} th{background:#eee} .r{text-align:right} .sheet{padding:12mm}</style><div class='sheet'><h1>${esc(inv.title||'Rechnung')}</h1><table><thead><tr><th>Pos</th><th>Bezeichnung</th><th>Menge</th><th>Preis</th><th>Total</th></tr></thead><tbody>${rows}</tbody></table><p>Gesamt: ${grand.toFixed(2)}</p></div>`; w.document.write(html); w.document.close(); }
+
+  document.getElementById('paid_invoices_table')?.addEventListener('click',e=>{ const b=e.target.closest('button[data-act]'); if(b) handle(b); });
+
+  renderPaid();
+})();

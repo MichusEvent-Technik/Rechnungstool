@@ -1,0 +1,786 @@
+/* Complete UI Design System Overhaul */
+:root{
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,.1);
+  
+  --transition-fast: 120ms ease-out;
+  --transition-normal: 200ms ease-out;
+  --transition-slow: 300ms ease-out;
+  
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+}
+
+/* Enhanced Typography */
+body {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--font-size-3xl); margin: 0 0 var(--space-lg); }
+h2 { font-size: var(--font-size-xl); margin: var(--space-lg) 0 var(--space-md); }
+h3 { font-size: var(--font-size-lg); margin: var(--space-md) 0 var(--space-sm); }
+
+/* Enhanced Form Controls */
+input, select, textarea {
+  font-size: var(--font-size-base);
+  line-height: 1.5; /* increased for better readability */
+  padding: var(--space-md) var(--space-lg); /* increased padding */
+  border-radius: var(--radius-md);
+  border: 1px solid #374151;
+  background: rgba(17, 24, 39, 0.5);
+  color: #e5e7eb;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  min-height: 44px; /* ensure minimum touch target */
+  box-sizing: border-box;
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: #4b5563;
+  box-shadow: var(--shadow-md);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Special styling for important inputs */
+#inv_title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  padding: var(--space-lg) var(--space-xl); /* increased padding */
+  margin-bottom: var(--space-lg); /* better bottom spacing */
+  min-height: 60px; /* larger for prominence */
+  border-radius: var(--radius-lg);
+  letter-spacing: -0.01em;
+}
+
+/* Enhanced Buttons */
+.btn {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.01em;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn.sm {
+  font-size: var(--font-size-xs);
+  padding: var(--space-xs) var(--space-sm);
+}
+
+/* Enhanced Cards */
+.card {
+  padding: var(--space-2xl); /* increased padding */
+  border: 1px solid #374151;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card + .card {
+  margin-top: var(--space-lg);
+}
+
+/* Enhanced Tables */
+.table {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  background: rgba(17, 24, 39, 0.8);
+}
+
+.table th, .table td {
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+}
+
+.table th {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(31, 41, 55, 0.8);
+}
+
+.table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.table tbody tr:hover {
+  background: rgba(55, 65, 81, 0.3);
+}
+
+/* Enhanced Badges and Pills */
+.badge, .pill {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.badge {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.pill {
+  background: rgba(55, 65, 81, 0.5);
+  border: 1px solid #4b5563;
+}
+
+/* Form Layout Improvements */
+.row, .inline {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: #d1d5db;
+  margin-bottom: var(--space-sm); /* increased from xs to sm */
+  margin-top: var(--space-md); /* add top margin for better separation */
+  letter-spacing: 0.01em;
+}
+
+/* First label in forms shouldn't have top margin */
+.card label:first-child,
+.form-group label:first-child {
+  margin-top: 0;
+}
+
+/* Larger input fields with better spacing */
+input, select, textarea {
+  font-size: var(--font-size-base);
+  line-height: 1.5; /* increased for better readability */
+  padding: var(--space-md) var(--space-lg); /* increased padding */
+  border-radius: var(--radius-md);
+  border: 1px solid #374151;
+  background: rgba(17, 24, 39, 0.5);
+  color: #e5e7eb;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  min-height: 44px; /* ensure minimum touch target */
+  box-sizing: border-box;
+}
+
+/* Minimum widths for better usability */
+#view-create input:not([type="checkbox"]):not([type="radio"]):not(.table input),
+#view-firm input:not([type="checkbox"]):not([type="radio"]):not(.table input),
+#view-customers input:not([type="checkbox"]):not([type="radio"]):not(.table input) {
+  width: 100%;
+  min-width: 200px; /* ensure reasonable minimum width */
+  max-width: 500px; /* prevent overly wide fields */
+}
+
+/* Better sizing for specific field types */
+input[type="email"], input[type="url"] {
+  min-width: 280px;
+}
+
+input[type="tel"], input[type="number"] {
+  min-width: 120px;
+}
+
+/* Improved grouped field layouts */
+.row input, .inline input {
+  min-width: 140px; /* increased minimum for grouped fields */
+  flex: 1 1 auto;
+}
+
+/* Better spacing between form sections */
+.form-section {
+  margin-bottom: var(--space-2xl);
+}
+
+/* Improved card internal spacing */
+.card {
+  padding: var(--space-2xl); /* increased padding */
+}
+
+/* Better spacing for form groups */
+.form-group {
+  margin-bottom: var(--space-xl); /* increased spacing between groups */
+}
+
+/* Improved button spacing */
+.button-group {
+  margin-top: var(--space-xl); /* more space above button groups */
+  gap: var(--space-md); /* better gap between buttons */
+}
+
+/* Better spacing for checkboxes and radios */
+input[type="checkbox"], input[type="radio"] {
+  margin-right: var(--space-md); /* increased spacing */
+  margin-top: var(--space-xs); /* slight top alignment */
+}
+
+/* Improved select dropdown sizing */
+select {
+  min-width: 180px; /* ensure selects are wide enough */
+  padding-right: 40px; /* more space for dropdown arrow */
+}
+
+/* Better textarea sizing */
+textarea {
+  min-height: 100px; /* increased minimum height */
+  min-width: 300px; /* ensure adequate width */
+  resize: vertical;
+}
+
+/* Improved spacing for special inputs */
+#inv_title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  padding: var(--space-lg) var(--space-xl); /* increased padding */
+  margin-bottom: var(--space-lg); /* better bottom spacing */
+  min-height: 60px; /* larger for prominence */
+}
+
+/* Better spacing for address fields */
+.address-group {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* Improved Positionen section layout */
+
+/* Better spacing for Positionen section */
+#view-create {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+}
+
+/* Improved product selection area */
+.product-selection {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  gap: var(--space-md);
+  align-items: end;
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(55, 65, 81, 0.3);
+}
+
+/* Better free item form layout */
+.free-item-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: var(--space-md);
+  align-items: end;
+  margin-top: var(--space-lg);
+  padding: var(--space-lg);
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(55, 65, 81, 0.2);
+}
+
+/* Improved positions table */
+#items {
+  margin: var(--space-xl) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: rgba(17, 24, 39, 0.8);
+}
+
+#items .table {
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Better totals section */
+.totals-section {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-xl);
+}
+
+.totals-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(55, 65, 81, 0.5);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  min-width: 320px;
+  box-shadow: var(--shadow-md);
+}
+
+.totals-box h3 {
+  margin: 0 0 var(--space-lg) 0;
+  font-size: var(--font-size-lg);
+  color: #f3f4f6;
+  text-align: center;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+  padding-bottom: var(--space-md);
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.2);
+}
+
+.totals-row:last-child {
+  border-bottom: 2px solid rgba(156, 163, 175, 0.5);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-md);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  color: #f9fafb;
+}
+
+.totals-label {
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+.totals-value {
+  font-weight: 600;
+  color: #e5e7eb;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+/* VAT input styling */
+.vat-input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0;
+}
+
+.vat-input-group label {
+  margin: 0;
+  color: #d1d5db;
+  font-weight: 500;
+}
+
+.vat-input-group input {
+  width: 80px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Better form section layouts */
+.form-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 2px solid rgba(55, 65, 81, 0.3);
+}
+
+.form-section-header h2 {
+  margin: 0;
+  color: #f3f4f6;
+}
+
+/* Improved button layouts */
+.action-buttons {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(55, 65, 81, 0.3);
+}
+
+/* Invoice meta information layout */
+.invoice-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.meta-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-field label {
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Status message improvements */
+#status {
+  margin-top: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  text-align: center;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Positionen: klare Grid-Anordnung für Produkt- und Freitextzeilen */
+.posline {
+  display: grid;
+  grid-column-gap: var(--space-lg);
+  grid-row-gap: var(--space-sm);
+  align-items: end;
+  margin-bottom: var(--space-md);
+}
+.posline label { margin-top: 0; margin-bottom: var(--space-xs); }
+
+/* Produktzeile: Label | Select | Menge-Label | Menge-Input | Button */
+.posline-product {
+  grid-template-columns: 120px 1fr 90px 120px auto;
+}
+
+/* Freitextzeile: Label | Text | Menge-Label | Menge | Preis-Label | Preis | Button */
+.posline-free {
+  grid-template-columns: 120px 1fr 90px 120px 90px 140px auto;
+}
+
+/* Inputs in den Grids sollen die verfügbare Spaltenbreite nutzen */
+.posline input, .posline select {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+.posline input[type="number"] { min-width: 110px; }
+
+/* Buttons am rechten Rand der Zeile ausrichten */
+.posline .btn { justify-self: end; }
+
+/* Mobile: Elemente untereinander stapeln, Buttons volle Breite */
+@media (max-width: 900px) {
+  .posline { grid-template-columns: 1fr; align-items: stretch; }
+  .posline .btn { grid-column: 1/-1; justify-self: stretch; width: 100%; }
+}
+
+/* Responsive improvements for positions */
+@media (max-width: 1200px) {
+  .product-selection {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .free-item-form {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .invoice-meta {
+    grid-template-columns: 1fr;
+  }
+  
+  .totals-section {
+    justify-content: center;
+  }
+  
+  .totals-box {
+    min-width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  #view-create {
+    padding: var(--space-lg);
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .action-buttons button {
+    width: 100%;
+  }
+}
+
+/* Flight and passenger sections improvements */
+.additional-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.additional-data .card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(55, 65, 81, 0.4);
+}
+
+@media (max-width: 968px) {
+  .additional-data {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+/* Flight form specific */
+#flight_date, #flight_dep, #flight_arr, #flight_time, #flight_routing {
+  margin-bottom: var(--space-sm);
+}
+
+/* Layout fixes and consistency improvements */
+
+/* Override problematic inline width constraints in tables */
+.table input[style*="width"] {
+  width: auto !important;
+  min-width: 60px;
+}
+
+/* Fix form input width issues */
+#view-create input:not([type="checkbox"]):not([type="radio"]):not(.table input),
+#view-firm input:not([type="checkbox"]):not([type="radio"]):not(.table input),
+#view-customers input:not([type="checkbox"]):not([type="radio"]):not(.table input) {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Specific overrides for grouped fields */
+.row input, .inline input {
+  width: auto;
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Fix vertical spacing in forms */
+.form-field {
+  margin-bottom: var(--space-lg);
+}
+
+/* Improve checkbox and radio styling */
+input[type="checkbox"], input[type="radio"] {
+  width: auto;
+  margin-right: var(--space-sm);
+  transform: scale(1.1);
+}
+
+/* Better label alignment */
+label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: #d1d5db;
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.01em;
+}
+
+/* Fix hidden field visibility */
+.hidden {
+  display: none !important;
+}
+
+/* Improve status message styling */
+#firm_form_status, #cust_form_status, #passenger_feedback, #flight_feedback {
+  font-size: var(--font-size-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-sm);
+  min-height: 20px;
+}
+
+/* Better button grouping */
+.button-group {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* Fix table cell alignment */
+.table .right {
+  text-align: right;
+}
+
+/* Improve spinner controls */
+.qtywrap {
+  position: relative;
+  display: inline-block;
+}
+
+.spinbox {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.spin {
+  width: 16px;
+  height: 12px;
+  font-size: 8px;
+  line-height: 1;
+  padding: 0;
+  border: none;
+  background: rgba(55, 65, 81, 0.8);
+  color: #d1d5db;
+  cursor: pointer;
+}
+
+.spin:hover {
+  background: rgba(75, 85, 99, 0.8);
+}
+
+/* Fix drag handle styling */
+.drag-handle {
+  cursor: grab;
+  user-select: none;
+  opacity: 0.6;
+  margin-right: var(--space-xs);
+}
+
+.drag-handle:hover {
+  opacity: 1;
+}
+
+/* Better positioning number styling */
+.pos-label {
+  font-weight: 500;
+  color: #9ca3af;
+  min-width: 20px;
+  display: inline-block;
+}
+
+/* Improve card header spacing */
+.card h2:first-child, .card h3:first-child {
+  margin-top: 0;
+}
+
+/* Fix grid layouts */
+#firm_summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-xs) var(--space-md);
+  align-items: baseline;
+}
+
+/* Better responsive behavior */
+@media (max-width: 768px) {
+  .row, .inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .row input, .inline input {
+    width: 100%;
+  }
+  
+  .table {
+    font-size: var(--font-size-sm);
+  }
+  
+  .card {
+    padding: var(--space-lg);
+  }
+}
+
+/* Fix select dropdown styling */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 32px;
+  appearance: none;
+}
+
+/* Improve textarea styling */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Fix focus ring consistency */
+input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Better error state styling */
+.danger input, .danger select, .danger textarea {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Improve success state styling */
+.success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* Fix muted text consistency */
+.muted {
+  color: #9ca3af;
+  font-size: var(--font-size-sm);
+}
